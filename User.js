@@ -45,7 +45,7 @@ User.prototype.findPlaylist = function (id) {
 };
 
 User.prototype.addPlaylist = function (playlist) {
-    if (!this.findPlaylist(playlist.__id)) { 
+    if (!this.findPlaylist(playlist.__id) && this.__subscription.__status) { 
     this.__playlists.push(playlist);
     };   
 };

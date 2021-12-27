@@ -54,8 +54,10 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // User.changeSubscription();
 // console.log(User);
 
-// User.changeSubscription();
-// console.log(User);
+User.changeSubscription();
+User.addPlaylist(Playlist04);
+
+console.log(User);
 
 
 
