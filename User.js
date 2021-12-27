@@ -75,7 +75,7 @@ User.prototype.findTrackById = function (id) {
 
 User.prototype.addTrackToPlaylist = function (id, track) {
     for (var i = 0; i < this.__playlists.length; i++) {
-        if (this.__playlists[i].findTrackById(id)) {
+        if (this.__playlists[i].__id === id) {
             this.__playlists[i].__tracks.push(track);
             return;
         }

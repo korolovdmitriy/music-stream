@@ -39,7 +39,7 @@ console.log(User);
 // User.removePlaylistById(2);
 // User.playTrack()
 
-// User.addTrackToPlaylist(1, Track01)
+// User.addTrackToPlaylist(2, Track01)
 // console.log(User);
 
 // User.removeTrackFromPlaylist(1, 1);
@@ -59,7 +59,7 @@ console.log(User);
 
 // console.log(User);
 
-console.log(User.findTrackById(50));
+// console.log(User.findTrackById(50));
 
 
 
