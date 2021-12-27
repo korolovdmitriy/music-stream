@@ -25,8 +25,8 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // Playlist.addTrack(Track02);
 // console.log(Playlist);
 
-// Playlist01.removeTrackById(2);
-// console.log(Playlist01);
+Playlist01.removeTrackById(2);
+console.log(Playlist01);
 
 // console.log(Playlist01.findTrackById(2));
 

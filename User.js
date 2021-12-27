@@ -32,7 +32,9 @@ User.prototype.getSubscription = function () {
 };
 
 User.prototype.playAll = function () {
-    this.__playlists.map(playlist => playlist.playAll());
+    this.__playlists.map(function (playlist) {
+        playlist.playAll();
+    });
 };
 
 User.prototype.findPlaylist = function (id) {
@@ -67,9 +69,9 @@ User.prototype.findTrackById = function (id) {
     return null;
 };
 
-User.prototype.playTrack = function () {
-    this.__track.play();
-};
+// User.prototype.playTrack = function () {
+//     this.__track.play();
+// };
 
 User.prototype.addTrackToPlaylist = function (id, track) {
     for (var i = 0; i < this.__playlists.length; i++) {

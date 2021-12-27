@@ -4,7 +4,7 @@ function Subscription () {
     this.__status = false;
 }
 
-Subscription.prototype.setStatus = function () {
+Subscription.prototype.getStatus = function () {
     return this.__status;
 };
 

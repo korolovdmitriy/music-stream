@@ -11,7 +11,9 @@ Playlist.prototype.getTracks = function () {
 };
 
 Playlist.prototype.playAll = function () {
-    this.__tracks.map(track => track.play());
+    this.__tracks.map(function (track) {
+        track.play();
+    });
 };
 
 Playlist.prototype.currentTrack = function () {
@@ -36,10 +38,10 @@ Playlist.prototype.findTrackById = function (id) {
 };
 
 Playlist.prototype.removeTrackById = function (id) {
-    this.__tracks.map((track, index) => {
-        if (track.__id === id) {
-            this.__tracks.splice(index, 1);
+    for (var i = 0; i < this.__tracks.length; i++) {
+        if (this.__tracks[i].__id === id) {
+            this.__tracks.splice(i, 1);
         };
-    });
+    };
 };
 
