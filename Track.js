@@ -1,33 +1,35 @@
-var Track = function (data) {
-    var { title, id } = data
-    DataTrack.call(this, data),
-    this.title = title,
-    this.id = id;   
-    this.state = false;
-}
+'use strict'
+
+function Track (genre, rate, title, id) {
+    DataTrack.call(this, genre, rate);
+    this.__title = title;
+    this.__id = id;
+    this.__state = false;
+};
 
 Track.prototype = Object.create(DataTrack.prototype);
+Track.prototype.constructor = Track;
 
 Track.prototype.getTitle = function () {
-        return this.title;
-}
+    return this.__title;
+};
 Track.prototype.setGenre = function (newTitle) {
-        this.title = newTitle;
-}
+    this.__title = newTitle;
+};
 
 Track.prototype.getId = function () {
-        return this.id;
-}
+    return this.__id;
+};
 Track.prototype.setId = function (newId) {
-        this.id = newId;
-}
+    this.__id = newId;
+};
 
-Track.prototype.play = function () {
-    this.state = true;
-}
-Track.prototype.stop = function () {
-    this.state = false;
-}
 DataTrack.prototype.getState = function () {
-        return this.state;
-}
+    return this.__state;
+};
+Track.prototype.play = function () {
+    this.__state = true;
+};
+Track.prototype.stop = function () {
+    this.__state = false;
+};
