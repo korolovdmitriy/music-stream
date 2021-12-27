@@ -15,7 +15,7 @@ var Playlist04 = new Playlist([Track03, Track04, Track05], 'Fourth playlist', 4)
 
 var User = new User ('User name', 'User email', 'password', [Playlist01, Playlist02, Playlist03], Track04, Subscription);
 
-// console.log(User);
+console.log(User);
 // console.log(Playlist01);
 
 // Playlist01.playAll();
@@ -25,8 +25,8 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // Playlist.addTrack(Track02);
 // console.log(Playlist);
 
-Playlist01.removeTrackById(2);
-console.log(Playlist01);
+// Playlist01.removeTrackById(2);
+// console.log(Playlist01);
 
 // console.log(Playlist01.findTrackById(2));
 
@@ -54,10 +54,12 @@ console.log(Playlist01);
 // User.changeSubscription();
 // console.log(User);
 
-User.changeSubscription();
-User.addPlaylist(Playlist04);
+// User.changeSubscription();
+// User.addPlaylist(Playlist04);
 
-console.log(User);
+// console.log(User);
+
+console.log(User.findTrackById(50));
 
 
 

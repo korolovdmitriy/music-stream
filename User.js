@@ -63,7 +63,7 @@ User.prototype.removePlaylistById = function (id) {
 User.prototype.findTrackById = function (id) {
     for (var i = 0; i < this.__playlists.length; i++) {
         if (this.__playlists[i].findTrackById(id)) {
-            return this.__playlists[i];
+            return this.__playlists[i].findTrackById(id);
         };
     };
     return null;
@@ -84,7 +84,7 @@ User.prototype.addTrackToPlaylist = function (id, track) {
 };
 
 User.prototype.removeTrackFromPlaylist = function (playlistId, trackId) {
-    this.__playlists.map(playlist => {
+    this.__playlists.map(function (playlist) {
         if (playlist.findTrackById(playlistId)) {
             playlist.removeTrackById(trackId);
         };
