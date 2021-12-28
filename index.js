@@ -39,8 +39,8 @@ console.log(User);
 // User.removePlaylistById(2);
 // User.playTrack()
 
-// User.addTrackToPlaylist(2, Track01)
-// console.log(User);
+User.addTrackToPlaylist(2, Track01)
+console.log(User);
 
 // User.removeTrackFromPlaylist(1, 1);
 // console.log(User);
