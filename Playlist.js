@@ -18,8 +18,8 @@ Playlist.prototype.playAll = function () {
 
 Playlist.prototype.currentTrack = function () {
     for (var i = 0; i < this.__tracks.length; i++) {
-        if (this.__tracks[i].getState()) {
-            return this.__tracks[i].getId();
+        if (this.__tracks[i].__state) {
+            return this.__tracks[i].__id;
         };
     };
 };
