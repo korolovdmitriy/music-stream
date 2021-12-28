@@ -39,7 +39,7 @@ User.prototype.playAll = function () {
 
 User.prototype.findPlaylist = function (id) {
     for (var i = 0; i < this.__playlists.length; i++) {
-        if (this.__playlists[i].__id === id) {
+        if (this.__playlists[i].getId() === id) {
             return this.__playlists[i];
         };
     };
@@ -47,14 +47,14 @@ User.prototype.findPlaylist = function (id) {
 };
 
 User.prototype.addPlaylist = function (playlist) {
-    if (!this.findPlaylist(playlist.__id) && this.__subscription.__status) { 
+    if (!this.findPlaylist(playlist.getId()) && this.__subscription.getStatus()) { 
     this.__playlists.push(playlist);
     };   
 };
 
 User.prototype.removePlaylistById = function (id) {
     for (var i = 0; i < this.__playlists.length; i++) {
-        if (this.__playlists[i].__id === id) {
+        if (this.__playlists[i].getId() === id) {
             this.__playlists.splice(i, 1);
         };
     };
@@ -62,8 +62,9 @@ User.prototype.removePlaylistById = function (id) {
 
 User.prototype.findTrackById = function (id) {
     for (var i = 0; i < this.__playlists.length; i++) {
-        if (this.__playlists[i].findTrackById(id)) {
-            return this.__playlists[i].findTrackById(id);
+        var track = this.__playlists[i].findTrackById(id);
+        if (track) {
+            return track;
         };
     };
     return null;
@@ -75,8 +76,8 @@ User.prototype.findTrackById = function (id) {
 
 User.prototype.addTrackToPlaylist = function (id, track) {
     for (var i = 0; i < this.__playlists.length; i++) {
-        if (this.__playlists[i].__id === id) {
-            this.__playlists[i].__tracks.push(track);
+        if (this.__playlists[i].getId() === id) {
+            this.__playlists[i].addTrack(track);
             return;
         }
     }

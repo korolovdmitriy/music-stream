@@ -18,6 +18,8 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // console.log(User);
 // console.log(Playlist01);
 
+// console.log(Track01.getId());
+
 // Playlist01.playAll();
 // Track02.play();
 // console.log(Playlist01.currentTrack());;
@@ -33,7 +35,8 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // User.playAll();
 // console.log(User);
 
-// console.log(User.findPlaylist(10));
+// console.log(User.findPlaylist(1));
+// Subscription.changeStatus();
 
 // User.addPlaylist(Playlist04);
 // User.removePlaylistById(2);
@@ -57,9 +60,11 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // User.changeSubscription();
 // User.addPlaylist(Playlist04);
 
-// console.log(User);
+console.log(User.findTrackById(2));
 
-// console.log(User.findTrackById(50));
+console.log(User);
+
+
 
 
 

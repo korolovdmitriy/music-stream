@@ -10,6 +10,14 @@ Playlist.prototype.getTracks = function () {
     return this.__tracks;
 };
 
+Playlist.prototype.getTitle = function () {
+    return this.__title;
+};
+
+Playlist.prototype.getId = function () {
+    return this.__id;
+};
+
 Playlist.prototype.playAll = function () {
     this.__tracks.map(function (track) {
         track.play();
@@ -18,8 +26,8 @@ Playlist.prototype.playAll = function () {
 
 Playlist.prototype.currentTrack = function () {
     for (var i = 0; i < this.__tracks.length; i++) {
-        if (this.__tracks[i].__state) {
-            return this.__tracks[i].__id;
+        if (this.__tracks[i].getState()) {
+            return this.__tracks[i].getId();
         };
     };
 };
@@ -30,7 +38,7 @@ Playlist.prototype.addTrack = function (track) {
 
 Playlist.prototype.findTrackById = function (id) {
     for (var i = 0; i < this.__tracks.length; i++) {
-        if (this.__tracks[i].__id === id) {
+        if (this.__tracks[i].getId() === id) {
            return this.__tracks[i];
         };
     };
@@ -39,7 +47,7 @@ Playlist.prototype.findTrackById = function (id) {
 
 Playlist.prototype.removeTrackById = function (id) {
     for (var i = 0; i < this.__tracks.length; i++) {
-        if (this.__tracks[i].__id === id) {
+        if (this.__tracks[i].getId() === id) {
             this.__tracks.splice(i, 1);
         };
     };
