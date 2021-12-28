@@ -19,8 +19,8 @@ var User = new User ('User name', 'User email', 'password', [Playlist01, Playlis
 // console.log(Playlist01);
 
 // Playlist01.playAll();
-Track02.play();
-console.log(Playlist01.currentTrack());;
+// Track02.play();
+// console.log(Playlist01.currentTrack());;
 
 // Playlist01.addTrack(Track02);
 // console.log(Playlist01);
