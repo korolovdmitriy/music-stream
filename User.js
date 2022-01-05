@@ -47,18 +47,17 @@ class User {
         return this.#playlists.find(playlist => playlist.id === id) || null;
     }
 
-    // addPlaylist(playlist) {
-    //     if (!this.findPlaylist(playlist.id) && this.#subscription.status) {
-    //         this.#playlists.push(playlist);
-    //     }
-    // }
+    addPlaylist(playlist) {
+        if (!this.findPlaylist(playlist.id) && this.#subscription.status) {
+            this.#playlists.push(playlist);
+        }
+    }
 
-    addPlaylist(playlist, callback) {
-    setTimeout(function () {
+    addPlaylistAsync(playlist, callback) {
+        setTimeout(function() {
             let errorSubscription;
-        let data;
-        
-        if (this.subscription) {
+            let data;
+            if (this.subscription) {
                 this.#playlists.push(playlist);
                 data = 'Congratulations! Your new playlist has been added to your account!';
             } else {

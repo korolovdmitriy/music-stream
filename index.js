@@ -11,8 +11,6 @@ const Track05 = new Track({genre: 'House', rate: 4, title: 'track 05', id: 5});
 // console.log(Track01);
 const UserSubscription = new Subscription();
 
-
-
 const Playlist01 = new Playlist([Track01, Track02, Track03], 'First playlist', 1);
 const Playlist02 = new Playlist([Track01, Track03, Track04, Track05], 'Second playlist', 2);
 const Playlist03 = new Playlist([Track03, Track04, Track05], 'Third playlist', 3);
@@ -20,7 +18,7 @@ const Playlist04 = new Playlist([Track03, Track04, Track05], 'Fourth playlist', 
 const User01 = new User ('User name', 'User email', 'password', [Playlist01, Playlist02, Playlist03], UserSubscription);
 
 // User01.changeSubscription();
-console.log(User01);
+// console.log(User01);
 
 // console.log(Playlist01);
 
@@ -124,17 +122,17 @@ User01.changeSubscription();
 console.log(User01);
 console.log(User01.subscription);
 
-// User01.addPlaylist (Playlist01, function (errorSubscription, data) {
+// User01.addPlaylistAsync (Playlist01, function (errorSubscription, data) {
 //     if (errorSubscription) {
 //         console.error(errorSubscription);
 //     } else {
 //         console.log(data);
-//         User01.addPlaylist (Playlist02, function (errorSubscription, data) {
+//         User01.addPlaylistAsync (Playlist02, function (errorSubscription, data) {
 //             if (errorSubscription) {
 //                 console.error(errorSubscription);
 //             } else {
 //                 console.log(data);
-//                 User01.addPlaylist (Playlist03, function (errorSubscription, data) {
+//                 User01.addPlaylistAsync (Playlist03, function (errorSubscription, data) {
 //                 if (errorSubscription) {
 //                     console.error(errorSubscription);
 //                 } else {
@@ -147,17 +145,17 @@ console.log(User01.subscription);
 // }.bind(User01));
 
 
-User01.addPlaylist (Playlist01, function (errorSubscription, data) {
+User01.addPlaylistAsync (Playlist01, function (errorSubscription, data) {
     if (errorSubscription) {
         console.error(errorSubscription);
     } else {
         console.log(data);
-        User01.addPlaylist (Playlist02, function (errorSubscription, data) {
+        User01.addPlaylistAsync (Playlist02, function (errorSubscription, data) {
     if (errorSubscription) {
         console.error(errorSubscription);
     } else {
         console.log(data);
-        User01.addPlaylist (Playlist03, function (errorSubscription, data) {
+        User01.addPlaylistAsync (Playlist03, function (errorSubscription, data) {
     if (errorSubscription) {
         console.error(errorSubscription);
     } else {
