@@ -58,43 +58,72 @@ const playlist05 = new Playlist(
   "Fourth playlist",
   5
 );
-console.log(userSubscription);
 
 const user01 = new User(
   "User name",
   "User email",
   "password",
   [playlist01, playlist02, playlist03],
-  track05,
   userSubscription
 );
 
 user01.changeSubscription();
 // console.log(user01);
 
-user01.addPlaylistAsync(playlist04, function (error) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log("Playlist added!");
-    user01.addPlaylistAsync(playlist05, function (error) {
-      if (error) {
-        console.error(error);
-      } else {
-        console.log("Playlist added!");
-        user01.addPlaylistAsync(playlist03, function (error) {
-          if (error) {
-            console.error(error);
-          } else {
-            console.log("Playlist added!");
-          }
-        });
-      }
-    });
-  }
-});
+// console.log(user01.subscription);
 
-// user01.changeSubscription();
+// user01.addPlaylistAsync(playlist04, function (error) {
+//   if (error) {
+//     console.error(error);
+//   } else {
+//     console.log("Playlist added!");
+//     user01.addPlaylistAsync(playlist02, function (error) {
+//       if (error) {
+//         console.error(error);
+//       } else {
+//         console.log("Playlist added!");
+//         user01.addPlaylistAsync(playlist03, function (error) {
+//           if (error) {
+//             console.error(error);
+//           } else {
+//             console.log("Playlist added!");
+//           }
+//         });
+//       }
+//     });
+//   }
+// });
+
+// user01
+//   .addPlaylistAsyncAsync(playlist04)
+//   .then((result) => {
+//     console.log(result);
+//     return user01.addPlaylistAsyncAsync(playlist05);
+//   })
+//   .then((result) => {
+//     console.log(result);
+//     return user01.addPlaylistAsyncAsync(playlist01);
+//   })
+//   .catch((error) => console.error(error));
+
+async function addPlaylistToUser() {
+  try {
+    const result1 = await user01.addPlaylistAsyncAsync(playlist04);
+    console.log(result1);
+    const result2 = await user01.addPlaylistAsyncAsync(playlist05);
+    console.log(result2);
+    const result3 = await user01.addPlaylistAsyncAsync(playlist01);
+    console.log(result3);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+addPlaylistToUser();
+
+// ================================================
+
+// User01.changeSubscription();
 // console.log(User01);
 
 // console.log(Playlist01);
