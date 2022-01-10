@@ -58,6 +58,7 @@ const playlist05 = new Playlist(
   "Fourth playlist",
   5
 );
+
 const user01 = new User(
   "User name",
   "User email",
@@ -68,6 +69,7 @@ const user01 = new User(
 
 user01.changeSubscription();
 // console.log(user01);
+
 // console.log(user01.subscription);
 
 // user01.addPlaylistAsync(playlist04, function (error) {
@@ -126,7 +128,7 @@ addPlaylistToUser();
 
 // console.log(Playlist01);
 
-// Track02.play();
+// track02.play();
 
 // console.log(Playlist01.currentTrack());
 // console.log(Playlist01.findTrackById(2));
