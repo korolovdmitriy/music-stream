@@ -1,119 +1,111 @@
 "use strict";
 
-class User {
-  #name;
-  #email;
-  #password;
-  #playlists;
-  #subscription;
+function User(name, email, password, playlists, track, subscription) {
+  this.__name = name;
+  this.__email = email;
+  this.__password = password;
+  this.__playlists = playlists;
+  this.__track = track;
+  this.__subscription = subscription;
+}
 
-  constructor(name, email, password, playlists, subscription) {
-    this.#name = name;
-    this.#email = email;
-    this.#password = password;
-    this.#playlists = playlists;
-    this.#subscription = subscription;
-  }
+User.prototype.getName = function () {
+  return this.__name;
+};
 
-  get name() {
-    return this.#name;
-  }
+User.prototype.getEmail = function () {
+  return this.__email;
+};
+User.prototype.setEmail = function (newEmail) {
+  this.__email = newEmail;
+};
 
-  get email() {
-    return this.#email;
-  }
+User.prototype.getPassword = function () {
+  this.__password;
+};
+User.prototype.setPassword = function (newPassword) {
+  this.__password = newPassword;
+};
 
-  set email(newEmail) {
-    this.#email = newEmail;
-  }
+User.prototype.getSubscription = function () {
+  return this.__subscription;
+};
 
-  get password() {
-    return this.#password;
-  }
+User.prototype.playAll = function () {
+  this.__playlists.forEach(function (playlist) {
+    playlist.playAll();
+  });
+};
 
-  set password(newPassword) {
-    this.#password = newPassword;
-  }
-
-  get subscription() {
-    return this.#subscription.status;
-  }
-
-  playAll() {
-    this.#playlists.forEach((playlist) => playlist.playAll());
-  }
-
-  findPlaylist(id) {
-    return this.#playlists.find((playlist) => playlist.id === id) || null;
-  }
-
-  addPlaylist(playlist) {
-    if (!this.findPlaylist(playlist.id) && this.#subscription.status) {
-      this.#playlists.push(playlist);
+User.prototype.findPlaylist = function (id) {
+  for (var i = 0; i < this.__playlists.length; i++) {
+    if (this.__playlists[i].getId() === id) {
+      return this.__playlists[i];
     }
   }
+  return null;
+};
 
-  addPlaylistAsync(playlist, callback) {
-    setTimeout(
-      function () {
-        let error;
-        if (!this.findPlaylist(playlist.id) && this.#subscription.status) {
-          this.#playlists.push(playlist);
-        } else {
-          error = new Error("Something went wrong :(");
-        }
-        callback(error);
-      }.bind(this),
-      1000
-    );
+User.prototype.addPlaylist = function (playlist) {
+  if (!this.findPlaylist(playlist.getId()) && this.__subscription.getStatus()) {
+    this.__playlists.push(playlist);
   }
+};
 
-  addPlaylistAsyncAsync(playlist) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (!this.findPlaylist(playlist.id) && this.subscription) {
-          this.#playlists.push(playlist);
-          resolve("Playlist added");
-        } else {
-          reject(new Error("Something went wrong :("));
-        }
-      }, 1000);
-    });
-  }
-
-  removePlaylistById(id) {
-    this.#playlists.forEach((playlist, index) => {
-      if (playlist.id === id) {
-        this.#playlists.splice(index, 1);
+User.prototype.addPlaylistAsync = function (playlist, callback) {
+  setTimeout(
+    function () {
+      var error;
+      if (
+        !this.findPlaylist(playlist.getId()) &&
+        this.__subscription.getStatus()
+      ) {
+        this.__playlists.push(playlist);
+      } else {
+        error = new Error("Something went wrong :(");
       }
-    });
-  }
+      callback(error);
+    }.bind(this),
+    1000
+  );
+};
 
-  findTrackById(id) {
-    const playlist = this.#playlists.find((playlist) =>
-      playlist.findTrackById(id)
-    );
-    if (playlist) {
-      return playlist.findTrackById(id);
-    }
-    return null;
-  }
-
-  addTrackToPlaylist(playlistId, track) {
-    const playlist = this.findPlaylist(playlistId);
-    if (playlist) {
-      playlist.addTrack(track);
+User.prototype.removePlaylistById = function (id) {
+  for (var i = 0; i < this.__playlists.length; i++) {
+    if (this.__playlists[i].getId() === id) {
+      this.__playlists.splice(i, 1);
     }
   }
+};
 
-  removeTrackFromPlaylist(playlistId, trackId) {
-    const playlist = this.findPlaylist(playlistId);
-    if (playlist) {
+User.prototype.findTrackById = function (id) {
+  for (var i = 0; i < this.__playlists.length; i++) {
+    var track = this.__playlists[i].findTrackById(id);
+    if (track) {
+      return track;
+    }
+  }
+  return null;
+};
+
+User.prototype.addTrackToPlaylist = function (playlistId, track) {
+  for (var i = 0; i < this.__playlists.length; i++) {
+    if (this.__playlists[i].getId() === playlistId) {
+      this.__playlists[i].addTrack(track);
+      return;
+    }
+  }
+  return null;
+};
+
+User.prototype.removeTrackFromPlaylist = function (playlistId, trackId) {
+  this.__playlists.forEach(function (playlist) {
+    if (playlist.findTrackById(playlistId)) {
       playlist.removeTrackById(trackId);
     }
-  }
+  });
+};
 
-  changeSubscription() {
-    this.#subscription.changeStatus();
-  }
-}
+User.prototype.changeSubscription = function () {
+  this.__subscription.changeStatus();
+};
