@@ -1,28 +1,108 @@
-'use strict';
+"use strict";
 
-// const TrackData01 = new TrackData({genre: 'Techno', rate: 5});
-// console.log(TrackData01.genre);
+// const trackData01 = new TrackData({genre: 'Techno', rate: 5});
+// console.log(trackData01.genre);
 
-const Track01 = new Track({genre: 'Techno', rate: 5, title: 'Max Cooper - Spike', id: 1});
-const Track02 = new Track({genre: 'Melodic House', rate: 6, title: 'ARTBAT - Horizon', id: 2});
-const Track03 = new Track({genre: 'Deep House', rate: 7, title: 'Anyma - Walking', id: 3});
-const Track04 = new Track({genre: 'House', rate: 5, title: 'track 04', id: 4});
-const Track05 = new Track({genre: 'House', rate: 4, title: 'track 05', id: 5});
-// console.log(Track01);
-const UserSubscription = new Subscription();
+const track01 = new Track({
+  genre: "Techno",
+  rate: 5,
+  title: "Max Cooper - Spike",
+  id: 1,
+});
+const track02 = new Track({
+  genre: "Melodic House",
+  rate: 6,
+  title: "ARTBAT - Horizon",
+  id: 2,
+});
+const track03 = new Track({
+  genre: "Deep House",
+  rate: 7,
+  title: "Anyma - Walking",
+  id: 3,
+});
+const track04 = new Track({
+  genre: "House",
+  rate: 5,
+  title: "track 04",
+  id: 4,
+});
+const track05 = new Track({
+  genre: "House",
+  rate: 4,
+  title: "track 05",
+  id: 5,
+});
 
-const Playlist01 = new Playlist([Track01, Track02, Track03], 'First playlist', 1);
-const Playlist02 = new Playlist([Track01, Track03, Track04, Track05], 'Second playlist', 2);
-const Playlist03 = new Playlist([Track03, Track04, Track05], 'Third playlist', 3);
-const Playlist04 = new Playlist([Track03, Track04, Track05], 'Fourth playlist', 4);
-const User01 = new User ('User name', 'User email', 'password', [Playlist01, Playlist02, Playlist03], UserSubscription);
+const userSubscription = new Subscription();
 
-// User01.changeSubscription();
+const playlist01 = new Playlist(
+  [track01, track02, track03],
+  "First playlist",
+  1
+);
+const playlist02 = new Playlist(
+  [track01, track03, track04, track05],
+  "Second playlist",
+  2
+);
+const playlist03 = new Playlist(
+  [track03, track04, track05],
+  "Third playlist",
+  3
+);
+const playlist04 = new Playlist(
+  [track03, track04, track05],
+  "Fourth playlist",
+  4
+);
+const playlist05 = new Playlist(
+  [track03, track04, track05],
+  "Fourth playlist",
+  5
+);
+console.log(userSubscription);
+
+const user01 = new User(
+  "User name",
+  "User email",
+  "password",
+  [playlist01, playlist02, playlist03],
+  track05,
+  userSubscription
+);
+
+user01.changeSubscription();
+// console.log(user01);
+
+user01.addPlaylistAsync(playlist04, function (error) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log("Playlist added!");
+    user01.addPlaylistAsync(playlist05, function (error) {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log("Playlist added!");
+        user01.addPlaylistAsync(playlist03, function (error) {
+          if (error) {
+            console.error(error);
+          } else {
+            console.log("Playlist added!");
+          }
+        });
+      }
+    });
+  }
+});
+
+// user01.changeSubscription();
 // console.log(User01);
 
 // console.log(Playlist01);
 
-// Track02.play();
+// track02.play();
 
 // console.log(Playlist01.currentTrack());
 // console.log(Playlist01.findTrackById(2));
@@ -113,63 +193,4 @@ const User01 = new User ('User name', 'User email', 'password', [Playlist01, Pla
 
 // console.log(User);
 
-
 // User.changeSubscription();
-
-
-
-User01.changeSubscription();
-console.log(User01);
-console.log(User01.subscription);
-
-// User01.addPlaylistAsync (Playlist01, function (errorSubscription, data) {
-//     if (errorSubscription) {
-//         console.error(errorSubscription);
-//     } else {
-//         console.log(data);
-//         User01.addPlaylistAsync (Playlist02, function (errorSubscription, data) {
-//             if (errorSubscription) {
-//                 console.error(errorSubscription);
-//             } else {
-//                 console.log(data);
-//                 User01.addPlaylistAsync (Playlist03, function (errorSubscription, data) {
-//                 if (errorSubscription) {
-//                     console.error(errorSubscription);
-//                 } else {
-//                        console.log(data);
-//                 };
-//             }.bind(User01));
-//             };
-//     }.bind(User01));
-//     };
-// }.bind(User01));
-
-
-User01.addPlaylistAsync (Playlist01, function (errorSubscription, data) {
-    if (errorSubscription) {
-        console.error(errorSubscription);
-    } else {
-        console.log(data);
-        User01.addPlaylistAsync (Playlist02, function (errorSubscription, data) {
-    if (errorSubscription) {
-        console.error(errorSubscription);
-    } else {
-        console.log(data);
-        User01.addPlaylistAsync (Playlist03, function (errorSubscription, data) {
-    if (errorSubscription) {
-        console.error(errorSubscription);
-    } else {
-        console.log(data);
-    };
-});
-    };
-});
-    };
-});
-
-
-
-
-
-
-
