@@ -1,8 +1,5 @@
 "use strict";
 
-// const trackData01 = new TrackData({genre: 'Techno', rate: 5});
-// console.log(trackData01.genre);
-
 const track01 = new Track({
   genre: "Techno",
   rate: 5,
